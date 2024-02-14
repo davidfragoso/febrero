@@ -1,22 +1,32 @@
+// script.js
 document.addEventListener('DOMContentLoaded', function () {
     const carrusel = document.getElementById('carrusel');
+    const carruselInner = document.querySelector('.carrusel-inner');
     const imagenes = document.querySelectorAll('.carrusel img');
-    const totalImagenes = imagenes.length;
     const velocidad = 1;
 
-    carrusel.innerHTML += carrusel.innerHTML;
+    carruselInner.innerHTML += carruselInner.innerHTML;
 
     let posicionActual = 0;
 
-    setInterval(() => {
+    function actualizarCarrusel() {
         posicionActual -= velocidad;
 
-        if (posicionActual <= -carrusel.clientWidth / 2) {
+        if (posicionActual <= -carruselInner.clientWidth / 2) {
+            // Al llegar al final, retrocedemos al principio para que se repitan las imágenes
             posicionActual = 0;
         }
 
-        carrusel.style.transform = `translateX(${posicionActual}px)`;
-    }, 20);
+        carruselInner.style.transform = `translateX(${posicionActual}px)`;
+        requestAnimationFrame(actualizarCarrusel);
+    }
+
+    function iniciarCarrusel() {
+        // Iniciamos el bucle de animación
+        requestAnimationFrame(actualizarCarrusel);
+    }
+
+    iniciarCarrusel();
 
     const pregunta = document.querySelector('.pregunta');
 
