@@ -1,0 +1,123 @@
+body {
+    font-family: 'Arial', sans-serif;
+    text-align: center;
+    background-color: #f3e5f5; /* Fondo de la página */
+    margin: 20px;
+    color: #4527a0; /* Color del texto principal */
+}
+
+h1 {
+    color: #d81b60; /* Color del título */
+    font-size: 2.5em; /* Tamaño del título */
+    margin-bottom: 20px;
+    animation: destello 1s infinite; /* Añade la animación de destello al título */
+}
+
+@keyframes destello {
+    0% {
+        color: #d81b60; /* Color normal */
+    }
+    50% {
+        color: #fce4ec; /* Color blanco o algún otro color claro */
+    }
+    100% {
+        color: #d81b60; /* Color normal */
+    }
+}
+
+#slider-container {
+    width: 80%;
+    overflow: hidden;
+    margin: 20px auto;
+}
+
+.carrusel {
+    display: flex;
+    transition: transform 0.5s ease; /* Agrega una transición suave al desplazamiento */
+    border-radius: 15px; /* Bordes redondeados para el carrusel */
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Agrega una sombra suave al carrusel */
+}
+
+.carrusel div {
+    flex: 0 0 auto;
+    transition: transform 0.3s ease; /* Agrega una transición suave a las imágenes en el carrusel */
+}
+
+.carrusel img {
+    height: 300px; /* Establece la altura deseada para todas las imágenes */
+    width: auto; /* Ancho automático para mantener la proporción */
+    border-radius: 15px; /* Bordes redondeados para las imágenes */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Agrega una sombra suave a las imágenes */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Añade transiciones a las transformaciones y sombras */
+}
+
+.carrusel img:hover {
+    transform: scale(1.1); /* Escala la imagen al pasar el mouse para un efecto de zoom */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Aumenta la sombra al pasar el mouse */
+}
+
+#texto-animado {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.pregunta {
+    font-size: 24px;
+    color: #d81b60; /* Color del mensaje */
+    margin-bottom: 10px;
+    animation: escribiendo 4s steps(20) forwards; /* Ajuste de la animación de escritura */
+}
+
+.respuestas {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+button {
+    font-size: 18px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    background-color: #d81b60; /* Color de fondo del botón */
+    color: #fff; /* Color del texto del botón */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Transiciones de color y fondo */
+}
+
+button:hover {
+    background-color: #fff; /* Cambia el fondo al pasar el mouse */
+    color: #d81b60; /* Cambia el color al pasar el mouse */
+}
+
+.alerta {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 10px 20px;
+    background-color: #d81b60; /* Color de fondo de la alerta */
+    color: #fff; /* Color del texto de la alerta */
+    border-radius: 10px;
+    opacity: 0;
+    transition: opacity 0.3s ease; /* Transición de opacidad */
+}
+
+.alerta.mostrar {
+    opacity: 1;
+}
+
+/* Reglas de medios para dispositivos móviles */
+/* Estilos para pantallas más pequeñas (ejemplo: dispositivos móviles) */
+@media (max-width: 768px) {
+    #slider-container {
+        width: 100%; /* Ocupa todo el ancho en dispositivos móviles */
+    }
+    
+    .carrusel img {
+        height: 200px; /* Ajusta la altura de las imágenes para pantallas más pequeñas */
+    }
+}
